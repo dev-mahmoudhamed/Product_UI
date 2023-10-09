@@ -1,0 +1,49 @@
+h1 {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    justify-content: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    width: 70%;
+    margin-left: 20px;
+}
+
+.products {
+    margin-top: 10px;
+}
+
+.card-body {
+    text-align: center;
+
+}
+
+.add {
+    background-color: rgb(170, 167, 167);
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.product-input {
+    margin-right: 150px;
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.p-button-primary {
+    margin-right: 10px;
+}

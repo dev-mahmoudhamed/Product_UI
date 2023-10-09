@@ -1,0 +1,49 @@
+<app-nav-bar></app-nav-bar>
+
+
+<div *ngIf="role !== undefined" class="product-input">
+    <input type="text" pInputText [(ngModel)]="searchTerm" placeholder="Search" />
+    <p-button (click)=" search()" label="Search"></p-button>
+</div>
+
+
+<div *ngIf="(role == 'Admin' || role == 'Manager')" class=" products row row-cols-3 g-3">
+    <a href="/product/new">
+        <div class="col">
+            <div class="card">
+                <div class="add card-body">
+                    <h2>Add new product</h2>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+
+<ng-container *ngIf="accountService.currentUser$ | async as user">
+    <div class="products row row-cols-3 g-3">
+        <ng-container *ngFor="let item of productList; let i = index">
+            <div class="col">
+                <div *ngIf="role != 'Customer'" class="card">
+                    <div class="card-body">
+                        <a href="/product/{{item.id}}">
+                            <h3>Product {{item.id}}</h3>
+                            <button pButton pRipple label="View" class="p-button-primary"></button>
+                            <button pButton pRipple label="Edit" class="p-button-success"></button>
+                        </a>
+                        <h5>Price: {{item.price | currency }}</h5>
+                    </div>
+                </div>
+                <ng-container *ngIf="role == 'Customer'">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="/product/{{item.id}}/view">
+                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80"
+                                    alt="Product Image"> </a>
+                            <h3>Price: {{item.price | currency }}</h3>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

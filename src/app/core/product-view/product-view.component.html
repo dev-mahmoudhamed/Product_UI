@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80"
+            alt="Product Image">
+    </div>
+    <div class="product-details">
+        <h1 class="product-title">{{product.name}}</h1>
+        <h4 class="category-name">{{product.category.name}}</h4>
+        <p class="product-price">{{product.price | currency}}</p>
+        <p class="product-description">{{product.description}} </p>
+    </div>
+</div>

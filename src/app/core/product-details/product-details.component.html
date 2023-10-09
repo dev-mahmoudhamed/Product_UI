@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar>
+
+<ng-container *ngIf="role == 'Customer'">
+    <div class="container">
+        <i class="pi pi-exclamation-triangle icon"></i>
+        <h1>Unauthorized</h1>
+        <h4>You don't have permission to access this page.</h4>
+        <a href="/">Back to Home</a>
+    </div>
+</ng-container>
+
+<div *ngIf="(role == 'Admin' || role == 'Manager')" class="container mt-4">
+
+    <form [formGroup]="productform">
+        <div class="text-center mb-4">
+            <h1 class="mb-3">Add new Product </h1>
+        </div>
+
+        <app-text-input [formControl]="productform.controls['name']" [lable]="'Product Name'"></app-text-input>
+        <app-text-input [formControl]="productform.controls['description']" [lable]="'Description'"></app-text-input>
+        <app-text-input [formControl]="productform.controls['price']" [lable]="'Price'"></app-text-input>
+        <app-text-input [formControl]="productform.controls['categoryId']" [lable]="'categoryId'"></app-text-input>
+
+        <div class="d-grid">
+            <button *ngIf="!editMode" (click)="createProduct()" class="btn btn-lg btn-primary mt-3"> Create</button>
+            <button *ngIf="editMode" (click)="updateProduct()" class="btn btn-lg btn-primary mt-3"> Update</button>
+
+
+            <button *ngIf="editMode && role == 'Admin'" (click)="deleteProduct()" class="btn btn-lg btn-danger mt-3">
+                Delete</button>
+
+        </div>
+    </form>
+</div>
+
+
+
+<p-dialog [(visible)]="visible" [style]="{ width: '50vw' }">
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="visible = false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
